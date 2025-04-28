@@ -1,0 +1,35 @@
+CREATE DATABASE Angel_BD;
+use Angel_BD; 
+CREATE TABLE Estudiantes(
+id int primary key,
+nombre varchar(50),
+fechaNacimiento date
+);
+select * from Estudiantes;
+
+Insert into Estudiantes(id,nombre,fechaNacimiento)
+values(1,'Angel','2006-10-26');
+Insert into Estudiantes(id,nombre,fechaNacimiento)
+values(2,'Santiago','2006-10-19');
+
+delete from Estudiantes
+where id=2;
+
+create table Materia(
+codigo Int primary key identity(1,1),
+nombre varchar(50)
+);
+
+insert into Materia(nombre) values('Mantenimiento III'),('Progamacion');
+select * from Materia;
+
+create table Inscripciones(
+EstudianteID INT,
+MateriaCodigo int,
+FOREIGN KEY(EstudianteID) REFERENCES Estudiantes(ID),
+FOREIGN KEY(MateriaCodigo) REFERENCES Materia(Codigo)
+
+);
+select * from Inscripciones;
+INSERT INTO Inscripciones (EstudianteID,MateriaCodigo)
+VALUES(1,2);
